@@ -1,0 +1,3 @@
+import { requireStaff } from './_auth.js';
+import { db } from './_db.js';
+export default async function handler(req,res){const actor=requireStaff(req,res);if(!actor)return;if(req.method!=='GET')return res.status(405).json({error:'method_not_allowed'});try{const {data,error}=await db().from('bm_inventory').select('id,name,provider_state,health_normalized,verification_normalized,internal_classification,region_code,ip_region_metadata,limit_metadata,provider_updated_at,internal_updated_at').order('internal_updated_at',{ascending:false});if(error)throw error;res.status(200).json(data);}catch(e){res.status(500).json({error:'internal_error'});}}
