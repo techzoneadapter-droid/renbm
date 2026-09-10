@@ -1,0 +1,17 @@
+{
+  "name": "renbm",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=20"},
+  "scripts": {
+    "dev": "vercel dev",
+    "worker": "node worker/bm-job-worker.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.4"
+  },
+  "devDependencies": {
+    "vercel": "^48.0.0"
+  }
+}
